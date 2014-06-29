@@ -1,0 +1,18 @@
+blueprint:
+  name: lampu
+  description: LAMP
+  icon: 
+    file : redstone.png
+    content : (--- base64 encoded ---)
+  # by default, it should refer to our forj web documentation, to present the blueprint documentation. But we can propose to change it.
+  documentation : 'http://openstack.org/forj'
+  locations:
+    modules: 
+      - src-repo: lampu
+        git: https://github.com/daihaojun/lampu
+        install:
+          puppet-apply: install
+        uninstall:
+          puppet-apply: uninstall
+      - src-repo: config
+        puppet-extra-modules: /opt/config/production/git/config/modules

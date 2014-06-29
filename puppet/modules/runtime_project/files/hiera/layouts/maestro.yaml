@@ -1,0 +1,59 @@
+# (c) Copyright 2014 Hewlett-Packard Development Company, L.P.
+#
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+#
+# generated from transformation.py script.
+# Contains general layout information for maestro.
+# designed to work with puppetmaster subnodetype
+#
+
+classes:
+  - runtime_project::hiera_setup
+  - runtime_project::install
+
+# create the folling nodes
+maestro::nodes:
+  - 'web'
+
+# configure the following ssh keys
+maestro::ssh_user_keys:
+  - 'jenkins'
+  - 'forjio'
+
+# define the site information for this blueprint
+# shortname is a descriptive name, TODO: source this from the blueprint data.
+jimador::site:
+  maestro_url: "http://%{::maestro::node_vhost_lookup::vname}"
+  shortname: "Lampu"
+
+maestro::dns::global::default_contact: 'admin@%{::erodomain}'
+
+
+# This parameter is used in order to hide an application from the UI. Note: you also need to set to false the 'visible' property from the common.yaml.
+jimador::default_tools_filter:
+  - 'zuul'
+
+maestro::instance_domain: '%{::erodomain}'
+maestro::image_name: 'proto2b'
+maestro::flavor_name: 'm1.medium'
+maestro::key_name: 'demo-key'
+maestro::network_name: 'c497c945-d5ae-4b80-a907-c5c78c6c36cf'
+maestro::security_groups: 'default'
+
+# maestro ui /app configuration
+salt::salt_reactor:
+  - 'maestro'
+  - 'web'
+
+puppet::reports::graphite::status: 'enabled'
+puppet::reports::graphite::graphite_port: '2003'
