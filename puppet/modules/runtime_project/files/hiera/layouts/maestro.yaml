@@ -45,7 +45,7 @@ jimador::default_tools_filter:
 
 maestro::instance_domain: '%{::erodomain}'
 maestro::image_name: 'proto2b'
-maestro::flavor_name: 'm1.medium'
+maestro::flavor_name: 'm2.medium'
 maestro::key_name: 'demo-key'
 maestro::network_name: 'n-9bef54bab4214301978af3667ac9f024'
 maestro::security_groups: 'default'
