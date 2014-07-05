@@ -47,7 +47,7 @@ maestro::instance_domain: '%{::erodomain}'
 maestro::image_name: 'proto2b'
 maestro::flavor_name: 'm2.medium'
 maestro::key_name: 'demo-key'
-maestro::network_name: 'n-9bef54bab4214301978af3667ac9f024'
+maestro::network_name: 'tenant-net01'
 maestro::security_groups: 'default'
 
 # maestro ui /app configuration
