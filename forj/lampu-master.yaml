@@ -17,6 +17,3 @@ blueprint:
       - src-repo: php
         git: https://github.com/thias/puppet-php.git        
         puppet-extra-modules: /opt/config/production/git/php/
-        src-repo: jenkins
-        git: https://github.com/jenkinsci/puppet-jenkins.git
-        puppet-extra-modules: /opt/config/production/git/jenkins/
