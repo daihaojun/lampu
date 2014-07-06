@@ -1,3 +1,4 @@
 classes:
   - runtime_project::php
   - php::cli
+  - jenkins
