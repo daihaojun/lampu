@@ -23,11 +23,11 @@ classes:
 
 # create the folling nodes
 maestro::nodes:
-  - 'web'
+  - 'ci'
 
 # configure the following ssh keys
 maestro::ssh_user_keys:
-  - 'jenkins'
+  - 'ci'
   - 'forjio'
 
 # define the site information for this blueprint
