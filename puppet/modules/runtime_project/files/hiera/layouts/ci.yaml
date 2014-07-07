@@ -1,4 +1,3 @@
 classes:
-  - runtime_project::php
-  - php::cli
-  - runtime_project::install
+  - php_config::ini
+  - jenkins_config::master

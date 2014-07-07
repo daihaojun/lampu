@@ -16,4 +16,4 @@ blueprint:
           puppet-apply: uninstall
       - src-repo: php
         git: https://github.com/thias/puppet-php.git        
-        puppet-extra-modules: /opt/config/production/git/php/
+        puppet-extra-modules: /opt/config/production/git/php/     

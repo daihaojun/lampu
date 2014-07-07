@@ -1,4 +1,4 @@
-class runtime_project::php {
+class php_config::ini {
 
   php::ini { '/etc/php.ini':
     display_errors => 'On',

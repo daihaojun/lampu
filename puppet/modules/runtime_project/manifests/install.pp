@@ -16,5 +16,4 @@
 #
 #
 class runtime_project::install {
-  include jenkins
 }
