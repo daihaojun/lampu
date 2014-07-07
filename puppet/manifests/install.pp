@@ -32,12 +32,13 @@ class { 'runtime_project::hiera_setup':
 }
 
 file { "/opt/config/production/git/lampu/puppet/install_modules.sh":
-  mode => 700,
-} -> 
-exec { "install modules":
-    command => "install_modules.sh",
-    path    => "/usr/local/bin/:/bin/:/opt/config/production/git/lampu/puppet/",
-    user    => 'root',
+  mode => 777,
+  owner=>'root',
+  group=>'root',
+}
+
+exec { "/opt/config/production/git/lampu/puppet/install_modules.sh":
+  require => File['/opt/config/production/git/lampu/puppet/install_modules.sh']
 }
 
 
