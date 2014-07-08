@@ -4,5 +4,5 @@ class lampu::php_config {
     display_errors => 'On',
     memory_limit   => '256M',
   } ->
-  class { 'php::cli': ensure => '5.3.3' } 
+  class { 'php::cli': } 
 }
