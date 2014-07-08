@@ -1,4 +1,4 @@
-class lampu::php {
+class lampu::php_config {
   
   php::ini { '/etc/php.ini':
     display_errors => 'On',
