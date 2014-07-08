@@ -15,7 +15,7 @@
 # under the License.
 #
 #
-class jenkins_config::jenkinsuser(
+class lampu_jenkins::jenkinsuser(
   $ssh_key = '',
   $ensure = present,
   $sudo = true,

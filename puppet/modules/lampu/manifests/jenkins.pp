@@ -1,8 +1,8 @@
 class lampu::jenkins_confg
 {
-   class {'jenkins_config::jenkinsuser':
+   class {'lampu_jenkins::jenkinsuser':
    } ->
-   class { 'jenkins_config::master':
+   class { 'lampu_jenkins::master':
      
    }
 }

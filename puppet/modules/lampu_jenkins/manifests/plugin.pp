@@ -19,7 +19,7 @@
 # Borrowed from: https://github.com/jenkinsci/puppet-jenkins
 #
 
-define jenkins_config::plugin(
+define lampu_jenkins::plugin(
   $version=0,
   $update_site = 'http://updates.jenkins-ci.org'
 ) {

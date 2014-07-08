@@ -15,8 +15,8 @@
 # under the License.
 #
 #
-class jenkins_config::master(
-  $logo = hiera('jenkins_config::master::logo', 'puppet:///modules/jenkins_config/openstack.png'),
+class lampu_jenkins::master(
+  $logo = hiera('lampu_jenkins::master::logo', 'puppet:///modules/lampu_jenkins/openstack.png'),
   $vhost_name = $::fqdn,
   $serveradmin = "webmaster@${::domain}",
   $ssl_cert_file = '',
@@ -27,13 +27,13 @@ class jenkins_config::master(
   $ssl_chain_file_contents = '', # If left empty puppet will not create file.
   $jenkins_ssh_private_key = '',
   $jenkins_ssh_public_key = '',
-  $jenkins_version = hiera('jenkins_config::master::jenkins_version',present),
-  $jenkins_dpkg_repo = hiera('jenkins_config::master::jenkins_dpkg_repo','stable'), # should be a url, latest, or stable.
+  $jenkins_version = hiera('lampu_jenkins::master::jenkins_version',present),
+  $jenkins_dpkg_repo = hiera('lampu_jenkins::master::jenkins_dpkg_repo','stable'), # should be a url, latest, or stable.
 ) {
   include pip::python2
   include apt
   include apache
-  include jenkins_config::params
+  include lampu_jenkins::params
 
   exec { 'apt-get clean':
       path     => '/bin:/usr/bin',
@@ -83,7 +83,7 @@ class jenkins_config::master(
     port     => 443,
     docroot  => 'MEANINGLESS ARGUMENT',
     priority => '50',
-    template => 'jenkins_config/jenkins.vhost.erb',
+    template => 'lampu_jenkins/jenkins.vhost.erb',
     ssl      => true,
   }
 #  a2mod { 'rewrite':
@@ -132,7 +132,7 @@ class jenkins_config::master(
     'python-sqlalchemy',  # devstack-gate
     'ssl-cert',
     'sqlite3', # interact with devstack-gate DB
-    $::jenkins_config::params::maven_package,
+    $::lampu_jenkins::params::maven_package,
   ]
 
   package { $packages:
@@ -269,7 +269,7 @@ class jenkins_config::master(
     ensure  => present,
     owner   => 'jenkins',
     group   => 'nogroup',
-    content => template("jenkins_config/${simpletheme}.erb"),
+    content => template("lampu_jenkins/${simpletheme}.erb"),
     require => File['/var/lib/jenkins/plugins/simple-theme-plugin'],
   }
 

@@ -1,4 +1,4 @@
-# == jenkins_config:copy_job_templates
+# Class: jenkins::params
 # Copyright 2013 OpenStack Foundation.
 # Copyright 2013 Hewlett-Packard Development Company, L.P.
 #
@@ -14,19 +14,18 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 #
-
 #
-define jenkins_config::copy_job_templates(
-  $template_file  = $title,
-  $runtime_module = 'runtime_project',
-)
-{
-  $template_path = "${runtime_module}/jenkins_job_builder/config"
-  file { "/etc/jenkins_jobs/config/${template_file}":
-      ensure  => present,
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0755',
-      content => template("${template_path}/${template_file}.erb"),
+# This class holds parameters that need to be
+# accessed by other classes.
+class lampu_jenkins::params {
+  case $::osfamily {
+    'RedHat': {
     }
+    'Debian': {
+      $maven_package = 'maven'
+    }
+    default: {
+      fail('osfamily not supported in lampu_jenkins::params')
+    }
+  }
 }

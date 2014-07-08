@@ -1,4 +1,4 @@
-# == Class: jenkins_config::slave
+# == Class: lampu_jenkins::slave
 # Copyright 2013 OpenStack Foundation.
 # Copyright 2013 Hewlett-Packard Development Company, L.P.
 #
@@ -15,7 +15,7 @@
 # under the License.
 #
 #
-class jenkins_config::slave(
+class lampu_jenkins::slave(
   $ssh_key      = '',
   $sudo         = false,
   $bare         = false,
@@ -25,7 +25,7 @@ class jenkins_config::slave(
   $do_fortify   = false,
 ) {
 
-  include jenkins_config::params
+  include lampu_jenkins::params
 
   if ($user == true) {
     if ! defined(Class['jenkins::jenkinsuser'])
