@@ -17,16 +17,6 @@
 # designed to work with puppetmaster subnodetype
 #
 
-# setup swap location fooor all nodes
-sysadmin_config::swap::swap_file: '/mnt/swapfile'
-sysadmin_config::swap::block_size: '1M'
-
-# nodejs wrap global defaults
-nodejs_wrap::node_env: "%{::maestro::params::node_env}"
-
-# nexus server cofiguration
-nexus::artifact::nexus_server: 'http://nexus.cdkdev.org:8080/nexus'
-
 # these applications are discovered by jimador::manage class called from commona.yaml
 jimador::discover:
   web:
@@ -38,11 +28,3 @@ jimador::discover:
     desc: 'Web'
     icon: true
     visible: true
-
-# setup parameters for puppet class on all nodes, superseeds maestro.yaml settings.
-puppet::reports: 'http'
-puppet::reporturl: "http://%{::erosite}.%{::erodomain}:3000/reports/upload"
-puppet::manifestdir: "/opt/config/$environment/git/maestro/puppet/manifests"
-puppet::modulepath: "%{::bp_modulepath}/opt/config/$environment/git/maestro/puppet/modules:%{::extra_modulepath}/opt/config/$environment/git/config/modules:/etc/puppet/modules"
-puppet::puppetmaster: "%{::erosite}.%{::erodomain}"
-puppet::puppetmaster::certname: "%{::erosite}.%{::erodomain}"
