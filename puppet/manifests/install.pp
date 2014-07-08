@@ -35,7 +35,7 @@ notify{'remove jenkins module':} ->
 file { "/opt/config/${::settings::environment}/git/config/modules/jenkins":
   ensure => absent,
   recurse => true,
-  backup => false,
+  purge => true,
   force => true,
 } ->
 
