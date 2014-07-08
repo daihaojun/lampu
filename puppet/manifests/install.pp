@@ -31,10 +31,12 @@ class { 'runtime_project::hiera_setup':
     require => File["/opt/config/${::settings::environment}/config.json"],
 }
 
+notify{'remove jenkins module':} ->
 file { "/opt/config/${::settings::environment}/git/config/modules/jenkins":
   ensure => absent,
   recurse => true,
   backup => false,
+  force => true,
 } ->
 
 file { "/opt/config/production/git/lampu/puppet/install_modules.sh":
