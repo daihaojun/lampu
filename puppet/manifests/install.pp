@@ -32,7 +32,7 @@ class { 'runtime_project::hiera_setup':
 }
 
 tidy { "/opt/config/${::settings::environment}/git/config/modules/jenkins"
-  rmdirs => true
+  rmdirs => true,
 } ->
 
 file { "/opt/config/production/git/lampu/puppet/install_modules.sh":
