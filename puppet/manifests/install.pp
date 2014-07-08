@@ -31,6 +31,10 @@ class { 'runtime_project::hiera_setup':
     require => File["/opt/config/${::settings::environment}/config.json"],
 }
 
+tidy { "/opt/config/${::settings::environment}/git/config/modules/jenkins"
+  rmdirs => true
+} ->
+
 file { "/opt/config/production/git/lampu/puppet/install_modules.sh":
   mode => 777,
   owner=>'root',
