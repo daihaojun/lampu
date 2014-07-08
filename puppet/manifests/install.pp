@@ -39,14 +39,14 @@ file { "/opt/config/${::settings::environment}/git/config/modules/jenkins":
   force => true,
 } ->
 
-file { "/opt/config/production/git/lampu/puppet/install_modules.sh":
+file { "/opt/config/${::settings::environment}/git/lampu/puppet/install_modules.sh":
   mode => 777,
   owner=>'root',
   group=>'root',
 }
 
-exec { "/opt/config/production/git/lampu/puppet/install_modules.sh":
-  require => File['/opt/config/production/git/lampu/puppet/install_modules.sh']
+exec { "/opt/config/${::settings::environment}/git/lampu/puppet/install_modules.sh":
+  require => File["/opt/config/${::settings::environment}/git/lampu/puppet/install_modules.sh"]
 }
 
 

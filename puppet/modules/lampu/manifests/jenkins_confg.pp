@@ -1,4 +1,6 @@
 class lampu::jenkins_confg
 {
-  include jenkins
+  class{'jenkins':
+    configure_firewall => false,
+  }
 }
