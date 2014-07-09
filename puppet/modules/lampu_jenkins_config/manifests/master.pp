@@ -78,14 +78,7 @@ class lampu_jenkins_config::master(
     ],
     include_src => false,
   }
-
-  apache::vhost { "${vhost_name}":
-    port     => 443,
-    docroot  => 'MEANINGLESS ARGUMENT',
-    priority => '50',
-    template => 'lampu_jenkins_config/jenkins.vhost.erb',
-    ssl      => true,
-  }
+  
 #  a2mod { 'rewrite':
 #    ensure => present,
 #  }
@@ -96,36 +89,7 @@ class lampu_jenkins_config::master(
 #    ensure => present,
 #  }
 
-  if $ssl_cert_file_contents != '' {
-    file { $ssl_cert_file:
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0640',
-      content => $ssl_cert_file_contents,
-      before  => Apache::Vhost[$vhost_name],
-    }
-  }
-
-  if $ssl_key_file_contents != '' {
-    file { $ssl_key_file:
-      owner   => 'root',
-      group   => 'ssl-cert',
-      mode    => '0640',
-      content => $ssl_key_file_contents,
-      require => Package['ssl-cert'],
-      before  => Apache::Vhost[$vhost_name],
-    }
-  }
-
-  if $ssl_chain_file_contents != '' {
-    file { $ssl_chain_file:
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0640',
-      content => $ssl_chain_file_contents,
-      before  => Apache::Vhost[$vhost_name],
-    }
-  }
+ 
 
   $packages = [
     'python-babel',

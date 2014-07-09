@@ -35,7 +35,7 @@
              # MSIE 7 and newer should be able to use keepalive
              BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
 
-             RewriteEngine on
+             RewriteEngine on             
              RewriteCond %{HTTP_HOST} !<%= scope.lookupvar("::lampu_jenkins_config::master::vhost_name") %>
              RewriteRule ^.*$ https://<%= scope.lookupvar("::lampu_jenkins_config::master::vhost_name") %>/
 

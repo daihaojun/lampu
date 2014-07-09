@@ -1,7 +1,7 @@
 class lampu::jenkins_confg
 {
-    $ssl_cert_file  = "/etc/ssl/certs/%{::fqdn}.pem"
-    $ssl_key_file   = "/etc/ssl/private/%{::fqdn}.key"
+    $ssl_cert_file  = "/etc/ssl/certs/${::fqdn}.pem"
+    $ssl_key_file   = "/etc/ssl/private/${::fqdn}.key"
     $ssl_chain_file = '/etc/ssl/certs/intermediate.pem'
     $ca_certs_db    = '/opt/config/cacerts'
 
@@ -14,6 +14,7 @@ class lampu::jenkins_confg
     
     ::sysadmin_config::swap { '512':
     } ->
+    apache::mod { 'rewrite': } ->    
     class { 'lampu_jenkins_config::jenkinsuser':
       sudo => false,
     } ->
