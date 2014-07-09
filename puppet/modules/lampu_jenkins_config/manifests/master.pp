@@ -27,8 +27,8 @@ class lampu_jenkins_config::master(
   $ssl_chain_file_contents = '', # If left empty puppet will not create file.
   $jenkins_ssh_private_key = '',
   $jenkins_ssh_public_key = '',
-  $jenkins_version = hiera('lampu_jenkins_config::master::lampu_jenkins_config_version',present),
-  $jenkins_dpkg_repo = hiera('lampu_jenkins_config::master::lampu_jenkins_config_dpkg_repo','stable'), # should be a url, latest, or stable.
+  $jenkins_version = hiera('lampu_jenkins_config::master::jenkins_version',present),
+  $jenkins_dpkg_repo = hiera('lampu_jenkins_config::master::jenkins_dpkg_repo','stable'), # should be a url, latest, or stable.
 ) {
   include pip::python2
   include apt
@@ -78,18 +78,61 @@ class lampu_jenkins_config::master(
     ],
     include_src => false,
   }
-  
-#  a2mod { 'rewrite':
-#    ensure => present,
-#  }
-#  a2mod { 'proxy':
-#    ensure => present,
-#  }
-#  a2mod { 'proxy_http':
-#    ensure => present,
-#  }
 
- 
+  apache::vhost { "${vhost_name}":
+    port     => 443,
+    docroot  => 'MEANINGLESS ARGUMENT',
+    priority => '50',
+    template => 'lampu_jenkins_config/jenkins.vhost.erb',
+    ssl      => true,
+  }
+
+  if ! defined(A2mod['rewrite']) {
+    a2mod { 'rewrite':
+      ensure => present,
+    }
+  }
+  if ! defined(A2mod['proxy']) {
+    a2mod { 'proxy':
+      ensure => present,
+    }
+  }
+  if ! defined(A2mod['proxy_http']) {
+    a2mod { 'proxy_http':
+      ensure => present,
+    }
+  }
+
+  if $ssl_cert_file_contents != '' {
+    file { $ssl_cert_file:
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0640',
+      content => $ssl_cert_file_contents,
+      before  => Apache::Vhost[$vhost_name],
+    }
+  }
+
+  if $ssl_key_file_contents != '' {
+    file { $ssl_key_file:
+      owner   => 'root',
+      group   => 'ssl-cert',
+      mode    => '0640',
+      content => $ssl_key_file_contents,
+      require => Package['ssl-cert'],
+      before  => Apache::Vhost[$vhost_name],
+    }
+  }
+
+  if $ssl_chain_file_contents != '' {
+    file { $ssl_chain_file:
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0640',
+      content => $ssl_chain_file_contents,
+      before  => Apache::Vhost[$vhost_name],
+    }
+  }
 
   $packages = [
     'python-babel',
@@ -243,6 +286,4 @@ class lampu_jenkins_config::master(
     group  => 'root',
     mode   => '0755',
   }
-
- 
 }
