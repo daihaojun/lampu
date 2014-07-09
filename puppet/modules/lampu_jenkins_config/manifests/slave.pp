@@ -28,9 +28,9 @@ class lampu_jenkins_config::slave(
   include lampu_jenkins_config::params
 
   if ($user == true) {
-    if ! defined(Class['jenkins::jenkinsuser'])
+    if ! defined(Class['jenkins::lampu_jenkins_configuser'])
     {
-      class { 'jenkins::jenkinsuser':
+      class { 'jenkins::lampu_jenkins_configuser':
         ensure  => present,
         sudo    => $sudo,
         ssh_key => $ssh_key,

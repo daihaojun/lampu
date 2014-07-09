@@ -1,4 +1,4 @@
-# == Class: jenkins::jenkinsuser
+# == Class: jenkins::lampu_jenkins_configuser
 # Copyright 2013 OpenStack Foundation.
 # Copyright 2013 Hewlett-Packard Development Company, L.P.
 #
@@ -15,7 +15,7 @@
 # under the License.
 #
 #
-class lampu_jenkins_config::jenkinsuser(
+class lampu_jenkins_config::lampu_jenkins_configuser(
   $ssh_key = '',
   $ensure = present,
   $sudo = true,

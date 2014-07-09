@@ -27,8 +27,8 @@ class lampu_jenkins_config::master(
   $ssl_chain_file_contents = '', # If left empty puppet will not create file.
   $jenkins_ssh_private_key = '',
   $jenkins_ssh_public_key = '',
-  $jenkins_version = hiera('lampu_jenkins_config::master::jenkins_version',present),
-  $jenkins_dpkg_repo = hiera('lampu_jenkins_config::master::jenkins_dpkg_repo','stable'), # should be a url, latest, or stable.
+  $jenkins_version = hiera('lampu_jenkins_config::master::lampu_jenkins_config_version',present),
+  $jenkins_dpkg_repo = hiera('lampu_jenkins_config::master::lampu_jenkins_config_dpkg_repo','stable'), # should be a url, latest, or stable.
 ) {
   include pip::python2
   include apt

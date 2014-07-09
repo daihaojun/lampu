@@ -1,4 +1,4 @@
-# == lampu_jenkins_config::jenkins_user_token
+# == lampu_jenkins_config::lampu_jenkins_config_user_token
 # Copyright 2013 OpenStack Foundation.
 # Copyright 2013 Hewlett-Packard Development Company, L.P.
 #
