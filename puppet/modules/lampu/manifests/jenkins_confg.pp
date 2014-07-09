@@ -19,7 +19,7 @@ class lampu::jenkins_confg
     class { 'lampu_jenkins_config::master':
       vhost_name                      => $::fqdn,
       serveradmin                     => "webmaster@${::domain}",
-      logo                            => 'openstack.png',
+      logo                            => "puppet:///modules/lampu_jenkins_config/openstack.png",
       ssl_cert_file                   => $ssl_cert_file,
       ssl_key_file                    => $ssl_key_file,
       ssl_chain_file                  => $ssl_chain_file,
