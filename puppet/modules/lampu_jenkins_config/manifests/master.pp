@@ -228,7 +228,7 @@ class lampu_jenkins_config::master(
     ensure  => present,
     owner   => 'jenkins',
     group   => 'nogroup',
-    source  => 'puppet:///modules/jenkins/openstack.css',
+    source  => 'puppet:///modules/lampu_jenkins_config/openstack.css',
     require => File['/var/lib/jenkins/plugins/simple-theme-plugin'],
   }
 
@@ -244,7 +244,7 @@ class lampu_jenkins_config::master(
     ensure  => present,
     owner   => 'jenkins',
     group   => 'nogroup',
-    source  => 'puppet:///modules/jenkins/openstack-page-bkg.jpg',
+    source  => 'puppet:///modules/lampu_jenkins_config/openstack-page-bkg.jpg',
     require => File['/var/lib/jenkins/plugins/simple-theme-plugin'],
   }
 
@@ -252,7 +252,7 @@ class lampu_jenkins_config::master(
     ensure  => present,
     owner   => 'jenkins',
     group   => 'nogroup',
-    source  => 'puppet:///modules/jenkins/logger.conf',
+    source  => 'puppet:///modules/lampu_jenkins_config/logger.conf',
     require => File['/var/lib/jenkins'],
   }
 
@@ -287,6 +287,6 @@ class lampu_jenkins_config::master(
     mode    => '0755',
     recurse => true,
     require => File['/usr/local/jenkins'],
-    source  => 'puppet:///modules/jenkins/slave_scripts',
+    source  => 'puppet:///modules/lampu_jenkins_config/slave_scripts',
   }
 }

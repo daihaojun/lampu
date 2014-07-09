@@ -62,7 +62,7 @@ class lampu_jenkins_config::jenkinsuser(
     owner   => 'jenkins',
     group   => 'jenkins',
     mode    => '0640',
-    source  => 'puppet:///modules/jenkins/gitconfig',
+    source  => 'puppet:///modules/lampu_jenkins_config/gitconfig',
     require => File['/home/jenkins'],
   }
 
@@ -124,7 +124,7 @@ class lampu_jenkins_config::jenkinsuser(
     group   => 'jenkins',
     mode    => '0640',
     require => File['/home/jenkins/.ssh'],
-    source  => 'puppet:///modules/jenkins/ssh_config',
+    source  => 'puppet:///modules/lampu_jenkins_config/ssh_config',
   }
 
   file { '/home/jenkins/.gnupg':
@@ -141,7 +141,7 @@ class lampu_jenkins_config::jenkinsuser(
     group   => 'jenkins',
     mode    => '0600',
     require => File['/home/jenkins/.gnupg'],
-    source  => 'puppet:///modules/jenkins/pubring.gpg',
+    source  => 'puppet:///modules/lampu_jenkins_config/pubring.gpg',
   }
 
   file { '/home/jenkins/.config':
@@ -166,7 +166,7 @@ class lampu_jenkins_config::jenkinsuser(
     group   => 'jenkins',
     mode    => '0644',
     require => File['/home/jenkins/.m2'],
-    source  => 'puppet:///modules/jenkins/settings.xml',
+    source  => 'puppet:///modules/lampu_jenkins_config/settings.xml',
   }
 
 }

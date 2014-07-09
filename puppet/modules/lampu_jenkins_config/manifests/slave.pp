@@ -64,7 +64,7 @@ class lampu_jenkins_config::slave(
   if ($::osfamily == 'Debian') {
     file { '/etc/sysctl.d/10-ptrace.conf':
       ensure => present,
-      source => 'puppet:///modules/jenkins/10-ptrace.conf',
+      source => 'puppet:///modules/lampu_jenkins_config/10-ptrace.conf',
       owner  => 'root',
       group  => 'root',
       mode   => '0444',
