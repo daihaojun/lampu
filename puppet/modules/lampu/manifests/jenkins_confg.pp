@@ -14,7 +14,6 @@ class lampu::jenkins_confg
     
     ::sysadmin_config::swap { '512':
     } ->
-    apache::mod { 'rewrite': } ->    
     class { 'lampu_jenkins_config::jenkinsuser':
       sudo => false,
     } ->
