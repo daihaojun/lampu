@@ -236,7 +236,7 @@ class lampu_jenkins_config::master(
     ensure  => present,
     owner   => 'jenkins',
     group   => 'nogroup',
-    content => template('jenkins/openstack.js.erb'),
+    content => template('lampu_jenkins_config/openstack.js.erb'),
     require => File['/var/lib/jenkins/plugins/simple-theme-plugin'],
   }
 
