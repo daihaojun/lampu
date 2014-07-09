@@ -28,3 +28,7 @@ jimador::discover:
     desc: 'Web'
     icon: true
     visible: true
+
+    
+puppet::puppetmaster: "%{::erosite}.%{::erodomain}"
+puppet::puppetmaster::certname: "%{::erosite}.%{::erodomain}"
