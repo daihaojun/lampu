@@ -1,3 +1,4 @@
+# == lampu_jenkins_config::jenkins_user_token
 # Copyright 2013 OpenStack Foundation.
 # Copyright 2013 Hewlett-Packard Development Company, L.P.
 #
@@ -12,10 +13,17 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
+#
+#
 
-# Array of modules to be installed key:value is module:version.
-# This is a list of our 3rd party modules we will allow install_modules.sh
-# to install.
-declare -A MODULES
-
-MODULES["thias-php"]="0.3.12"
+Facter.add("jenkins_user_token") do
+  confine :kernel => "Linux"
+  setcode do
+  #the string to look for and the path should change depending on the system to discover
+    if File.exist? "/tmp/jenkins.tok"
+      Facter::Util::Resolution.exec("cat /tmp/jenkins.tok")
+    else
+      Facter::Util::Resolution.exec("echo ")
+    end
+  end
+end

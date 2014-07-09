@@ -1,3 +1,4 @@
+# Class: jenkins::params
 # Copyright 2013 OpenStack Foundation.
 # Copyright 2013 Hewlett-Packard Development Company, L.P.
 #
@@ -12,10 +13,19 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
-
-# Array of modules to be installed key:value is module:version.
-# This is a list of our 3rd party modules we will allow install_modules.sh
-# to install.
-declare -A MODULES
-
-MODULES["thias-php"]="0.3.12"
+#
+#
+# This class holds parameters that need to be
+# accessed by other classes.
+class lampu_jenkins_config::params {
+  case $::osfamily {
+    'RedHat': {
+    }
+    'Debian': {
+      $maven_package = 'maven'
+    }
+    default: {
+      fail('osfamily not supported in lampu_jenkins_config::params')
+    }
+  }
+}
