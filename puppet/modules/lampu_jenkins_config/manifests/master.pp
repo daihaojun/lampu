@@ -280,13 +280,5 @@ class lampu_jenkins_config::master(
     mode   => '0755',
   }
 
-  file { '/usr/local/jenkins/slave_scripts':
-    ensure  => directory,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    recurse => true,
-    require => File['/usr/local/jenkins'],
-    source  => 'puppet:///modules/lampu_jenkins_config/slave_scripts',
-  }
+ 
 }

@@ -15,6 +15,7 @@ class lampu::jenkins_confg
     ::sysadmin_config::swap { '512':
     } ->
     class { 'lampu_jenkins_config::jenkinsuser':
+      sudo => false,
     } ->
     class { 'lampu_jenkins_config::master':
       vhost_name                      => $::fqdn,
