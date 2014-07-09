@@ -79,7 +79,7 @@ class lampu_jenkins_config::master(
     include_src => false,
   }
 
-  apache::vhost { "jenkins-${vhost_name}":
+  apache::vhost { "${vhost_name}":
     port     => 443,
     docroot  => 'MEANINGLESS ARGUMENT',
     priority => '50',
