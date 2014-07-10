@@ -1,4 +1,6 @@
 class lampu_svn {
+
+  include apache
   
   @user { 'www-data': ensure => present }
   
@@ -24,7 +26,7 @@ class lampu_svn {
   exec {"htpasswd /etc/subversion/passwd admin admin123":}
   -> 
   service { "apache2" : 
-    ensure => true
+    ensure => true,
   }
 
 }
