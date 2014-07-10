@@ -24,6 +24,7 @@ classes:
 # create the folling nodes
 maestro::nodes:
   - 'ci'
+  - 'svn'
 
 # configure the following ssh keys
 maestro::ssh_user_keys:
