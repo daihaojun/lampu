@@ -23,5 +23,5 @@ class lampu_svn {
     source => 'puppet:///modules/lampu_svn/subversion.conf',
     notify  => Service['apache2'],
   } ->
-  exec {"htpasswd /etc/subversion/passwd admin admin123":}
+  exec {"htpasswd -b /etc/subversion/passwd admin admin123":}
 }
