@@ -24,9 +24,4 @@ class lampu_svn {
     notify  => Service['apache2'],
   } ->
   exec {"htpasswd /etc/subversion/passwd admin admin123":}
-  -> 
-  service { "apache2" : 
-    ensure => true,
-  }
-
 }
