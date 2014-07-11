@@ -29,6 +29,7 @@ maestro::nodes:
 # configure the following ssh keys
 maestro::ssh_user_keys:
   - 'ci'
+  - 'svn'
   - 'forjio'
 
 # define the site information for this blueprint
