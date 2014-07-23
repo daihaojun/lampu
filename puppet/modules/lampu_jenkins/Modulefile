@@ -1,4 +1,4 @@
-name 'forj-lampu_jenkins_config'
+name 'forj-lampu_jenkins'
 version '0.1.0'
 author 'Copyright 2013 OpenStack Foundation, (c) Copyright 2014 Hewlett-Packard Development Company, L.P.'
 license 'http://www.apache.org/legal/resolved.html#required-third-party-notices'

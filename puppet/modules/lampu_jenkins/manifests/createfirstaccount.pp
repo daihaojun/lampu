@@ -1,4 +1,4 @@
-# == lampu_jenkins_config::createfirstaccount
+# == lampu_jenkins::createfirstaccount
 # Copyright 2013 OpenStack Foundation.
 # Copyright 2013 Hewlett-Packard Development Company, L.P.
 #
@@ -21,7 +21,7 @@
 #
 #
 
-class lampu_jenkins_config::createfirstaccount (
+class lampu_jenkins::createfirstaccount (
     $environment = $settings::environment,
 )
 {
@@ -32,7 +32,7 @@ class lampu_jenkins_config::createfirstaccount (
       owner   => 'root',
       group   => 'root',
       mode    => '0555',
-      source  => "puppet:///modules/lampu_jenkins_config/scripts/${acct_script}",
+      source  => "puppet:///modules/lampu_jenkins/scripts/${acct_script}",
       replace => true,
   }->
   exec { 'create first jenkins admin account':

@@ -1,4 +1,4 @@
-# == lampu_jenkins_config::lampu_jenkins_config_user_token
+# Class: jenkins::params
 # Copyright 2013 OpenStack Foundation.
 # Copyright 2013 Hewlett-Packard Development Company, L.P.
 #
@@ -15,15 +15,17 @@
 # under the License.
 #
 #
-
-Facter.add("jenkins_user_token") do
-  confine :kernel => "Linux"
-  setcode do
-  #the string to look for and the path should change depending on the system to discover
-    if File.exist? "/tmp/jenkins.tok"
-      Facter::Util::Resolution.exec("cat /tmp/jenkins.tok")
-    else
-      Facter::Util::Resolution.exec("echo ")
-    end
-  end
-end
+# This class holds parameters that need to be
+# accessed by other classes.
+class lampu_jenkins::params {
+  case $::osfamily {
+    'RedHat': {
+    }
+    'Debian': {
+      $maven_package = 'maven'
+    }
+    default: {
+      fail('osfamily not supported in lampu_jenkins::params')
+    }
+  }
+}

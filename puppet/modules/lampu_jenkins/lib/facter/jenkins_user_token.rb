@@ -1,4 +1,4 @@
-# == lampu_jenkins_config:copy_job_templates
+# == lampu_jenkins::lampu_jenkins_user_token
 # Copyright 2013 OpenStack Foundation.
 # Copyright 2013 Hewlett-Packard Development Company, L.P.
 #
@@ -14,19 +14,16 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 #
-
 #
-define lampu_jenkins_config::copy_job_templates(
-  $template_file  = $title,
-  $runtime_module = 'runtime_project',
-)
-{
-  $template_path = "${runtime_module}/jenkins_job_builder/config"
-  file { "/etc/jenkins_jobs/config/${template_file}":
-      ensure  => present,
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0755',
-      content => template("${template_path}/${template_file}.erb"),
-    }
-}
+
+Facter.add("jenkins_user_token") do
+  confine :kernel => "Linux"
+  setcode do
+  #the string to look for and the path should change depending on the system to discover
+    if File.exist? "/tmp/jenkins.tok"
+      Facter::Util::Resolution.exec("cat /tmp/jenkins.tok")
+    else
+      Facter::Util::Resolution.exec("echo ")
+    end
+  end
+end

@@ -40,22 +40,24 @@ jimador::site:
 
 maestro::dns::global::default_contact: 'admin@%{::erodomain}'
 
+maestro::instance_domain: '%{::erodomain}'
+maestro::image_name: '%{::image_name}'
+maestro::flavor_name: '%{::flavor_name}'
+maestro::key_name: '%{::key_name}'
+maestro::network_name: '%{::network_name}'
+maestro::security_groups: '%{::security_groups}'
 
 # This parameter is used in order to hide an application from the UI. Note: you also need to set to false the 'visible' property from the common.yaml.
 jimador::default_tools_filter:
   - 'zuul'
 
 maestro::instance_domain: '%{::erodomain}'
-maestro::image_name: 'proto2b'
-maestro::flavor_name: 'm2.medium'
-maestro::key_name: 'demo-key'
-maestro::network_name: 'private'
-maestro::security_groups: 'default'
 
 # maestro ui /app configuration
 salt::salt_reactor:
   - 'maestro'
-  - 'web'
+  - 'svn'
+  - 'ci'
 
 puppet::reports::graphite::status: 'enabled'
 puppet::reports::graphite::graphite_port: '2003'

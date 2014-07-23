@@ -14,13 +14,13 @@ class lampu::jenkins_confg
     
     ::sysadmin_config::swap { '512':
     } ->
-    class { 'lampu_jenkins_config::jenkinsuser':
+    class { 'lampu_jenkins::jenkinsuser':
       sudo => false,
     } ->
-    class { 'lampu_jenkins_config::master':
+    class { 'lampu_jenkins::master':
       vhost_name                      => $::fqdn,
       serveradmin                     => "webmaster@${::domain}",
-      logo                            => "puppet:///modules/lampu_jenkins_config/openstack.png",
+      logo                            => "puppet:///modules/lampu_jenkins/openstack.png",
       ssl_cert_file                   => $ssl_cert_file,
       ssl_key_file                    => $ssl_key_file,
       ssl_chain_file                  => $ssl_chain_file,
@@ -31,93 +31,93 @@ class lampu::jenkins_confg
       jenkins_ssh_public_key          => $jenkins_ssh_public_key,
     }
     
-    lampu_jenkins_config::plugin { 'ansicolor':
+    lampu_jenkins::plugin { 'ansicolor':
       version => '0.3.1',
     }
-    lampu_jenkins_config::plugin { 'bazaar':
+    lampu_jenkins::plugin { 'bazaar':
       version => '1.20',
     }
-    lampu_jenkins_config::plugin { 'build-timeout':
+    lampu_jenkins::plugin { 'build-timeout':
       version => '1.10',
     }
-    lampu_jenkins_config::plugin { 'copyartifact':
+    lampu_jenkins::plugin { 'copyartifact':
       version => '1.22',
     }
-    lampu_jenkins_config::plugin { 'dashboard-view':
+    lampu_jenkins::plugin { 'dashboard-view':
       version => '2.3',
     }
-    lampu_jenkins_config::plugin { 'envinject':
+    lampu_jenkins::plugin { 'envinject':
       version => '1.70',
     }
-    lampu_jenkins_config::plugin { 'gearman-plugin':
+    lampu_jenkins::plugin { 'gearman-plugin':
       version => '0.0.3',
     }
-    lampu_jenkins_config::plugin { 'git':
+    lampu_jenkins::plugin { 'git':
       version => '1.1.23',
     }
-    lampu_jenkins_config::plugin { 'github-api':
+    lampu_jenkins::plugin { 'github-api':
       version => '1.33',
     }
-    lampu_jenkins_config::plugin { 'github':
+    lampu_jenkins::plugin { 'github':
       version => '1.4',
     }
-    lampu_jenkins_config::plugin { 'greenballs':
+    lampu_jenkins::plugin { 'greenballs':
       version => '1.12',
     }
-    lampu_jenkins_config::plugin { 'htmlpublisher':
+    lampu_jenkins::plugin { 'htmlpublisher':
       version => '1.0',
     }
-    lampu_jenkins_config::plugin { 'extended-read-permission':
+    lampu_jenkins::plugin { 'extended-read-permission':
       version => '1.0',
     }
-    lampu_jenkins_config::plugin { 'postbuild-task':
+    lampu_jenkins::plugin { 'postbuild-task':
       version => '1.8',
     }
  
-    lampu_jenkins_config::plugin { 'jclouds-jenkins':
+    lampu_jenkins::plugin { 'jclouds-jenkins':
       version => '2.3.1',
     }
  
-    lampu_jenkins_config::plugin { 'violations':
+    lampu_jenkins::plugin { 'violations':
       version => '0.7.11',
     }
-    lampu_jenkins_config::plugin { 'jobConfigHistory':
+    lampu_jenkins::plugin { 'jobConfigHistory':
       version => '1.13',
     }
-    lampu_jenkins_config::plugin { 'monitoring':
+    lampu_jenkins::plugin { 'monitoring':
       version => '1.40.0',
     }
-    lampu_jenkins_config::plugin { 'nodelabelparameter':
+    lampu_jenkins::plugin { 'nodelabelparameter':
       version => '1.2.1',
     }
-    lampu_jenkins_config::plugin { 'notification':
+    lampu_jenkins::plugin { 'notification':
       version => '1.4',
     }
-    lampu_jenkins_config::plugin { 'openid':
+    lampu_jenkins::plugin { 'openid':
       version => '1.5',
     }
-    lampu_jenkins_config::plugin { 'parameterized-trigger':
+    lampu_jenkins::plugin { 'parameterized-trigger':
       version => '2.15',
     }
-    lampu_jenkins_config::plugin { 'publish-over-ftp':
+    lampu_jenkins::plugin { 'publish-over-ftp':
       version => '1.7',
     }
-    lampu_jenkins_config::plugin { 'rebuild':
+    lampu_jenkins::plugin { 'rebuild':
       version => '1.14',
     }
-    lampu_jenkins_config::plugin { 'simple-theme-plugin':
+    lampu_jenkins::plugin { 'simple-theme-plugin':
       version => '0.2',
     }
-    lampu_jenkins_config::plugin { 'timestamper':
+    lampu_jenkins::plugin { 'timestamper':
       version => '1.3.1',
     }
-    lampu_jenkins_config::plugin { 'token-macro':
+    lampu_jenkins::plugin { 'token-macro':
       version => '1.5.1',
     }
-    lampu_jenkins_config::plugin { 'url-change-trigger':
+    lampu_jenkins::plugin { 'url-change-trigger':
       version => '1.2',
     }
-    lampu_jenkins_config::plugin { 'urltrigger':
+    lampu_jenkins::plugin { 'urltrigger':
       version => '0.24',
     }
 }

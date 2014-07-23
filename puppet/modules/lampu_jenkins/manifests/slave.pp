@@ -1,4 +1,4 @@
-# == Class: lampu_jenkins_config::slave
+# == Class: lampu_jenkins::slave
 # Copyright 2013 OpenStack Foundation.
 # Copyright 2013 Hewlett-Packard Development Company, L.P.
 #
@@ -15,7 +15,7 @@
 # under the License.
 #
 #
-class lampu_jenkins_config::slave(
+class lampu_jenkins::slave(
   $ssh_key      = '',
   $sudo         = false,
   $bare         = false,
@@ -25,12 +25,12 @@ class lampu_jenkins_config::slave(
   $do_fortify   = false,
 ) {
 
-  include lampu_jenkins_config::params
+  include lampu_jenkins::params
 
   if ($user == true) {
-    if ! defined(Class['jenkins::lampu_jenkins_configuser'])
+    if ! defined(Class['jenkins::lampu_jenkinsuser'])
     {
-      class { 'jenkins::lampu_jenkins_configuser':
+      class { 'jenkins::lampu_jenkinsuser':
         ensure  => present,
         sudo    => $sudo,
         ssh_key => $ssh_key,
@@ -64,7 +64,7 @@ class lampu_jenkins_config::slave(
   if ($::osfamily == 'Debian') {
     file { '/etc/sysctl.d/10-ptrace.conf':
       ensure => present,
-      source => 'puppet:///modules/lampu_jenkins_config/10-ptrace.conf',
+      source => 'puppet:///modules/lampu_jenkins/10-ptrace.conf',
       owner  => 'root',
       group  => 'root',
       mode   => '0444',
