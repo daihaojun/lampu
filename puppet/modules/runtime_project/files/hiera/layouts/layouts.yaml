@@ -19,13 +19,13 @@
 
 # these applications are discovered by jimador::manage class called from commona.yaml
 jimador::discover:
-  web:
-    tool_email: "test@test.com"
-    tool_config: ""
-    tool_url: ""
+  ci:
+    tool_email: ""
+    tool_config: "%{::ci_url_config}"
+    tool_url: "%{::ci_url}"
     category: 'dev'
-    dname: 'web'
-    desc: 'Web'
+    dname: 'ci'
+    desc: 'ci'
     icon: true
     visible: true
 
