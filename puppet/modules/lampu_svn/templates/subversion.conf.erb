@@ -1,0 +1,15 @@
+  LDAPTrustedGlobalCert CA_BASE64 /opt/certs/cert01.crt
+      
+  <Location /svn/repo>
+     DAV svn
+     SVNPath /home/svn/repo
+
+	 AuthName "Enter your domain username and password"
+     AuthType Basic
+     AuthBasicProvider ldap
+
+     AuthLDAPURL <%= scope.lookupvar("::authldapurl") %>
+  	 AuthLDAPGroupAttributeIsDN on
+     require <%= scope.lookupvar("::ldapgroup") %>
+	 SSLRequireSSL
+  </Location>

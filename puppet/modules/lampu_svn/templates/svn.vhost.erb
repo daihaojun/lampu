@@ -1,0 +1,12 @@
+<VirtualHost *:443>             
+             SSLEngine on
+
+             SSLCertificateFile      <%= scope.lookupvar("::lampu_svn::cert_file") %>
+             SSLCertificateKeyFile   <%= scope.lookupvar("::lampu_svn::key_file") %>
+             <% if scope.lookupvar("::lampu_svn::chain_file") != "" %>
+               SSLCertificateChainFile <%= scope.lookupvar("::lampu_svn::chain_file") %>
+             <% end %>
+
+             SSLProtocol all
+			 SSLCipherSuite HIGH:MEDIUM
+</VirtualHost>
