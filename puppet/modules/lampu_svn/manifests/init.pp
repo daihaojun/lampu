@@ -10,7 +10,7 @@ class lampu_svn {
   
   $ca_certs_db = "/opt/config/cacerts"
   
-  package { "subversion": ensure => present ,}
+  package { "subversion": ensure => present ,} ->
 
   package { "libapache2-svn": ensure => present ,} 
   
@@ -80,13 +80,9 @@ class lampu_svn {
    
   file { '/etc/apache2/mods-enabled/dav_svn.conf':
     ensure => file,  
-    source => template("lampu_svn/subversion.conf.erb"),    
+    content => template("lampu_svn/subversion.conf.erb"),    
     require => Package['libapache2-svn'],
-  } ->
-  file { '/opt/config/cacerts/hpca2ssG2_ns.crt':
-    ensure => file,  
-    source => 'puppet:///modules/lampu_svn/hpca2ssG2_ns.crt',
     notify  => Service['apache2'],
   } 
-    
+
 }
