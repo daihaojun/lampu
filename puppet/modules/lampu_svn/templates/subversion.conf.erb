@@ -8,8 +8,8 @@
      AuthType Basic
      AuthBasicProvider ldap
 
-     AuthLDAPURL <%= scope.lookupvar("::authldapurl") %>
+     AuthLDAPURL <%= getenv('AUTHLDAPURL') %>
   	 AuthLDAPGroupAttributeIsDN on
-     require <%= scope.lookupvar("::ldapgroup") %>
+     require <%= getenv('LDAPGROUP') %>
 	 SSLRequireSSL
   </Location>
