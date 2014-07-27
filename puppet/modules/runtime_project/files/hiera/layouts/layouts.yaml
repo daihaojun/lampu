@@ -22,7 +22,7 @@ jimador::discover:
   ci:
     tool_email: ""
     tool_config: "%{::ci_url_config}"
-    tool_url: "%{::ci_url}"
+    tool_url: "%{::jenkins_url}"
     category: 'dev'
     dname: 'ci'
     desc: 'ci'

@@ -34,6 +34,15 @@ class lampu_jenkins::master(
   include apt
   include apache
   include lampu_jenkins::params
+  
+  include maestro::node_vhost_lookup
+  $host = $maestro::node_vhost_lookup::vname
+  
+  file {"/opt/jenkins" :
+    ensure=>"present",
+    content => $host,
+  }
+  
 
   exec { 'apt-get clean':
       path     => '/bin:/usr/bin',
