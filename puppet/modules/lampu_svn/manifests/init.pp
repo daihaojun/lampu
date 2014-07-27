@@ -34,15 +34,9 @@ class lampu_svn {
      subscribe   => File[$repo_dirs],
      refreshonly => true,  
      user  => "www-data",
-     group  => "subversion",
   } 
   
-  file { '/home/svn/repo':
-    ensure  => 'directory',
-    owner   => "www-data",
-    group   => "subversion",
-    require => Exec["svnadmin create /home/svn/repo"]    
- }
+
   
   $cert_file = join([$ca_certs_db ,"/ca2013/certs/${::fqdn}.crt"])
   
