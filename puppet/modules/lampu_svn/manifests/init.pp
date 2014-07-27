@@ -32,6 +32,7 @@ class lampu_svn {
   
   exec { "svnadmin create /home/svn/repo":    
      subscribe   => File[$repo_dirs],
+     path        => ["/usr/bin", "/usr/sbin"],
      refreshonly => true,  
      user  => "www-data",
   } 
