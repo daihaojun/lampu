@@ -32,7 +32,9 @@ class lampu_svn {
   
   exec { "svnadmin create /home/svn/repo":    
      subscribe   => File[$repo_dirs],
-     refreshonly => true,      
+     refreshonly => true,  
+     user  => "www-data",
+     group  => "subversion",
   } 
   
   $cert_file = join([$ca_certs_db ,"/ca2013/certs/${::fqdn}.crt"])
