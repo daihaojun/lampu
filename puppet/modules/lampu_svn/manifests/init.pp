@@ -30,12 +30,17 @@ class lampu_svn {
       mode   => 750,
   }  
   
-  exec { "svnadmin create /home/svn/repo":    
-     subscribe   => File[$repo_dirs],
-     path        => ["/usr/bin", "/usr/sbin"],
-     refreshonly => true,  
-     user  => "www-data",
-  } 
+  file {"/tmp/c.sh":
+  ensure=> "present",
+  mode => 777,
+  content=>"#!/bin/sh
+su - www-data -c 'svnadmin create /home/svn/repo'",
+	}
+	->
+	exec {"/tmp/c.sh":  
+	  subscribe   => File[$repo_dirs],    
+	     refreshonly => true,
+  }
   
 
   
