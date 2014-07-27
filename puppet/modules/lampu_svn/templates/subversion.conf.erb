@@ -1,15 +1,14 @@
-  LDAPTrustedGlobalCert CA_BASE64 /opt/certs/cert01.crt
-      
-  <Location /svn/repo>
-     DAV svn
-     SVNPath /home/svn/repo
+LDAPTrustedGlobalCert CA_BASE64 /opt/certs/cert01.crt
+  
+<Location /svn/repo>
+    DAV svn
+    SVNPath /home/svn/repo
 
-	 AuthName "Enter your domain username and password"
-     AuthType Basic
-     AuthBasicProvider ldap
-
-     AuthLDAPURL <%= scope.function_getenv(['AUTHLDAPURL']) %>
-  	 AuthLDAPGroupAttributeIsDN on
-     require <%= scope.function_getenv(['LDAPGROUP']) %>
-	 SSLRequireSSL
-  </Location>
+    AuthName "Enter your domain username and password"
+    AuthType Basic
+    AuthBasicProvider ldap
+    AuthLDAPURL <%= scope.function_getenv(['AUTHLDAPURL']) %>
+    AuthLDAPGroupAttributeIsDN on    
+    Require <%= scope.function_getenv(['LDAPGROUP']) %>
+    SSLRequireSSL
+</Location>
