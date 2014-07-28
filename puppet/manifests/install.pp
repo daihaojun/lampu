@@ -31,16 +31,16 @@ class { 'runtime_project::hiera_setup':
     require => File["/opt/config/${::settings::environment}/config.json"],
 }
 
-file {["/opt/config/production/app/maestro/ui/assets/tools_image/ci.png",
-    "/opt/config/production/git/maestro/ui/assets/tools_image/ci.png"]:
+file {["/opt/config/production/app/maestro/ui/assets/tools_image/tool_ci.png",
+    "/opt/config/production/git/maestro/ui/assets/tools_image/tool_ci.png"]:
     ensure=>"present",
     owner=> "puppet",
     group => "puppet",
     content => "puppet:///modules/lampu_jenkins/j.png"
   }
   
- file {["/opt/config/production/app/maestro/ui/assets/tools_image/svn.png",
-    "/opt/config/production/git/maestro/ui/assets/tools_image/svn.png"]:
+ file {["/opt/config/production/app/maestro/ui/assets/tools_image/tool_svn.png",
+    "/opt/config/production/git/maestro/ui/assets/tools_image/tool_svn.png"]:
     ensure=>"present",
     owner=> "puppet",
     group => "puppet",
