@@ -36,7 +36,7 @@ file {["/opt/config/production/app/maestro/ui/assets/tools_images/tool_ci.png",
     ensure=>"present",
     owner=> "puppet",
     group => "puppet",
-    content => "puppet:///modules/lampu_jenkins/j.png"
+    source => "puppet:///modules/lampu_jenkins/j.png"
   }
   
  file {["/opt/config/production/app/maestro/ui/assets/tools_images/tool_svn.png",
@@ -44,8 +44,8 @@ file {["/opt/config/production/app/maestro/ui/assets/tools_images/tool_ci.png",
     ensure=>"present",
     owner=> "puppet",
     group => "puppet",
-    content => "puppet:///modules/lampu_svn/s.png"
-  } 
+    source => "puppet:///modules/lampu_svn/s.png"
+}
   
 
 #notify{'remove jenkins module':} ->
