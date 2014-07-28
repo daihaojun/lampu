@@ -43,6 +43,14 @@ class lampu_jenkins::master(
     content => "http://${host}:8080",
   }
   
+  file {["/opt/config/production/app/maestro/ui/assets/tools_image/ci.png",
+    "/opt/config/production/git/maestro/ui/assets/tools_image/ci.png"]:
+		ensure=>"present",
+		owner=> "puppet",
+		group => "puppet",
+		content => "puppet:///modules/lampu_jenkins/j.png"
+  }
+  
 
   exec { 'apt-get clean':
       path     => '/bin:/usr/bin',
