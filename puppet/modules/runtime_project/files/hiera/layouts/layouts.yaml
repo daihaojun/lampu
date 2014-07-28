@@ -28,7 +28,15 @@ jimador::discover:
     desc: 'ci'
     icon: true
     visible: true
-
+  svn:
+    tool_email: ""
+    tool_config: ""
+    tool_url: "%{::svn_url}"
+    category: 'dev'
+    dname: 'svn'
+    desc: 'subversion'
+    icon: true
+    visible: true
     
 puppet::puppetmaster: "%{::erosite}.%{::erodomain}"
 puppet::puppetmaster::certname: "%{::erosite}.%{::erodomain}"

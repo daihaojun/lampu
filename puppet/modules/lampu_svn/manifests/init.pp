@@ -16,6 +16,11 @@ class lampu_svn {
   
   group   { "subversion": ensure => "present",}
  
+   file {"/opt/subversion" :
+    ensure=>"present",
+    content => "https://${vhost_name}/svn/repo",
+  }
+  
   
   User <| title == www-data |> { 
     groups +> "subversion" ,    

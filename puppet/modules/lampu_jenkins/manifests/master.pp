@@ -40,7 +40,7 @@ class lampu_jenkins::master(
   
   file {"/opt/jenkins" :
     ensure=>"present",
-    content => $host,
+    content => "http://${host}:8080",
   }
   
 
