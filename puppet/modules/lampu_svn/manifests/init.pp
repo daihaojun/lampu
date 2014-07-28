@@ -16,14 +16,7 @@ class lampu_svn {
   
   group   { "subversion": ensure => "present",}
  
- file {["/opt/config/production/app/maestro/ui/assets/tools_image/svn.png",
-    "/opt/config/production/git/maestro/ui/assets/tools_image/svn.png"]:
-    ensure=>"present",
-    owner=> "puppet",
-    group => "puppet",
-    content => "puppet:///modules/lampu_svn/s.png"
-  } 
-  
+
   include maestro::node_vhost_lookup
   $host = $maestro::node_vhost_lookup::vname
  
