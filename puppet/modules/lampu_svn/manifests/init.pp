@@ -16,9 +16,13 @@ class lampu_svn {
   
   group   { "subversion": ensure => "present",}
  
+  
+  include maestro::node_vhost_lookup
+  $host = $maestro::node_vhost_lookup::vname
+ 
    file {"/opt/subversion" :
     ensure=>"present",
-    content => "https://${vhost_name}/svn/repo",
+    content => "https://${host}/svn/repo",
   }
   
   
