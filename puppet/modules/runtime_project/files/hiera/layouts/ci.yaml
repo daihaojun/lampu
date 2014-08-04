@@ -1,5 +1,3 @@
 classes:
   - lampu::php_config
   - lampu::jenkins_confg  
-  - maestro::app::tool_status
-  - sysadmin_config::manage_servers
