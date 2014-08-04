@@ -1,25 +1,25 @@
-<VirtualHost <%= scope.lookupvar("::lampu_jenkins::master::vhost_name") %>:80>
+<VirtualHost <%= scope.lookupvar("::lampu_jenkins::master::host") %>:80>
              ServerAdmin <%= scope.lookupvar("::lampu_jenkins::master::serveradmin") %>
 
-             ErrorLog ${APACHE_LOG_DIR}/<%= scope.lookupvar("::lampu_jenkins::master::vhost_name") %>-error.log
+             ErrorLog ${APACHE_LOG_DIR}/<%= scope.lookupvar("::lampu_jenkins::master::host") %>-error.log
 
              LogLevel warn
 
-             CustomLog ${APACHE_LOG_DIR}/<%= scope.lookupvar("::lampu_jenkins::master::vhost_name") %>-access.log combined
+             CustomLog ${APACHE_LOG_DIR}/<%= scope.lookupvar("::lampu_jenkins::master::host") %>-access.log combined
 
-             Redirect / https://<%= scope.lookupvar("::lampu_jenkins::master::vhost_name") %>/
+             Redirect / https://<%= scope.lookupvar("::lampu_jenkins::master::host") %>/
 
 </VirtualHost>
 
-<VirtualHost <%= scope.lookupvar("::lampu_jenkins::master::vhost_name") %>:443>
-             ServerName <%= scope.lookupvar("::lampu_jenkins::master::vhost_name") %>
+<VirtualHost <%= scope.lookupvar("::lampu_jenkins::master::host") %>:443>
+             ServerName <%= scope.lookupvar("::lampu_jenkins::master::host") %>
              ServerAdmin <%= scope.lookupvar("::lampu_jenkins::master::serveradmin") %>
 
-             ErrorLog ${APACHE_LOG_DIR}/<%= scope.lookupvar("::lampu_jenkins::master::vhost_name") %>-ssl-error.log
+             ErrorLog ${APACHE_LOG_DIR}/<%= scope.lookupvar("::lampu_jenkins::master::host") %>-ssl-error.log
 
              LogLevel warn
 
-             CustomLog ${APACHE_LOG_DIR}/<%= scope.lookupvar("::lampu_jenkins::master::vhost_name") %>-ssl-access.log combined
+             CustomLog ${APACHE_LOG_DIR}/<%= scope.lookupvar("::lampu_jenkins::master::host") %>-ssl-access.log combined
 
              SSLEngine on
 
@@ -36,8 +36,8 @@
              BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
 
              RewriteEngine on             
-             RewriteCond %{HTTP_HOST} !<%= scope.lookupvar("::lampu_jenkins::master::vhost_name") %>
-             RewriteRule ^.*$ https://<%= scope.lookupvar("::lampu_jenkins::master::vhost_name") %>/
+             RewriteCond %{HTTP_HOST} !<%= scope.lookupvar("::lampu_jenkins::master::host") %>
+             RewriteRule ^.*$ https://<%= scope.lookupvar("::lampu_jenkins::master::host") %>/
 
              RewriteRule /zuul/status http://127.0.0.1:8001/status [P]
 

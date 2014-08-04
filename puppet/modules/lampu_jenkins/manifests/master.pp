@@ -42,9 +42,7 @@ class lampu_jenkins::master(
     ensure=>"present",
     content => "http://${host}:8080",
   }
-  
-  
-  
+   
 
   exec { 'apt-get clean':
       path     => '/bin:/usr/bin',
