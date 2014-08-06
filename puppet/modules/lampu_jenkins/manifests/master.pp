@@ -289,6 +289,15 @@ class lampu_jenkins::master(
     require => File['/var/lib/jenkins/plugins/simple-theme-plugin'],
   }
 
+ file { "/var/lib/jenkins/config.xml":
+    ensure  => present,
+    owner   => 'jenkins',
+    group   => 'nogroup',
+    content => template("lampu_jenkins/jenkins_config.erb"),
+    require => Package['jenkins'],
+  }
+
+
   file { '/usr/local/jenkins':
     ensure => directory,
     owner  => 'root',

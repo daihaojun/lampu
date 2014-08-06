@@ -123,26 +123,4 @@ class lampu::jenkins_confg
     lampu_jenkins::plugin { 'ldap':
       version => '1.10.2',
     }
-    
-    augeas { 'jenkins_config.xml' :
-      incl    => '/var/lib/jenkins/config.xml',
-      lens    => 'Xml.lns',
-      context => '/files//var/lib/jenkins/config.xml/hudson',
-      changes => [
-        "set useSecurity/#text true",
-        "set authorizationStrategy/#attribute/class hudson.security.GlobalMatrixAuthorizationStrategy",
-        "set authorizationStrategy/permission/#text hudson.model.Hudson.Administer:ROLE_TEST",
-        "set securityRealm/#attribute/class hudson.security.LDAPSecurityRealm",
-        "set securityRealm/#attribute/plugin ldap@1.6",
-        "set securityRealm/server/#text ldaps://ldap.hp.com",
-        "set securityRealm/rootDN/#text o=hp.com",
-        "set securityRealm/inhibitInferRootDN/#text false",
-        "set securityRealm/userSearchBase/#text ou=People",
-        "set securityRealm/userSearch/#text uid={0}",
-        "set securityRealm/groupSearchBase/#text ou=Groups",
-        "set securityRealm/disableMailAddressResolver/#text false",
-      ],
-      notify => Service["jenkins"],
-    }
-    
 }
