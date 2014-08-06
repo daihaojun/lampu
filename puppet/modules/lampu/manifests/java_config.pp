@@ -1,4 +1,4 @@
-class lampu::java_confg
+class lampu::java_config
 {
   java_ks { 'hp:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/security/cacerts':
     ensure       => latest,
