@@ -1,4 +1,4 @@
-<VirtualHost <%= scope.lookupvar("::lampu_jenkins::master::host") %>:80>
+<VirtualHost *:80>
              ServerAdmin <%= scope.lookupvar("::lampu_jenkins::master::serveradmin") %>
 
              ErrorLog ${APACHE_LOG_DIR}/<%= scope.lookupvar("::lampu_jenkins::master::host") %>-error.log
@@ -11,7 +11,7 @@
 
 </VirtualHost>
 
-<VirtualHost <%= scope.lookupvar("::lampu_jenkins::master::host") %>:443>
+<VirtualHost *:443>
              ServerName <%= scope.lookupvar("::lampu_jenkins::master::host") %>
              ServerAdmin <%= scope.lookupvar("::lampu_jenkins::master::serveradmin") %>
 
