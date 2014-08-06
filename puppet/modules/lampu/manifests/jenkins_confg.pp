@@ -120,4 +120,7 @@ class lampu::jenkins_confg
     lampu_jenkins::plugin { 'urltrigger':
       version => '0.24',
     }
+    lampu_jenkins::plugin { 'ldap':
+      version => '1.10.2',
+    }
 }
