@@ -1,3 +1,4 @@
 classes:
   - lampu::php_config
   - lampu::jenkins_confg  
+  - lampu::java_confg
