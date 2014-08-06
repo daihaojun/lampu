@@ -11,7 +11,7 @@
   <markupFormatter class="hudson.markup.EscapedMarkupFormatter"/>
   <useSecurity>true</useSecurity>
   <authorizationStrategy class="hudson.security.GlobalMatrixAuthorizationStrategy">
-    <permission>hudson.model.Hudson.Administer:ROLE_TEST</permission>
+    <permission>hudson.model.Hudson.Administer:<%= scope.function_get_jenkins_admin_group(['JENKINS_ADMIN_GROUP'])</permission>
   </authorizationStrategy>
   <securityRealm class="hudson.security.LDAPSecurityRealm" plugin="ldap@1.6">
     <server>ldaps://ldap.hp.com</server>
